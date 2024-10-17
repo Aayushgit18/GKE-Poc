@@ -7,12 +7,18 @@ import { PORT } from './config/utils.js';
 import authRouter from './routes/auth.js';
 import postsRouter from './routes/posts.js';
 import { connectToRedis } from './services/redis.js';
+
 const app = express();
 const port = PORT || 5000;
 
+// Configure CORS to allow requests from your frontend
+app.use(cors({
+  origin: 'http://35.223.159.193:5173', // Replace with your frontend's URL
+  credentials: true, // For cookies or authorization headers
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 app.use(cookieParser());
 app.use(compression());
 
@@ -27,7 +33,7 @@ app.use('/api/posts', postsRouter);
 app.use('/api/auth', authRouter);
 
 app.get('/', (req, res) => {
-  res.send('Yay!! Backend of wanderlust app is now accessible');
+  res.send('Yay!! Backend of wanderlust prod app is now accessible');
 });
 
 app.listen(port, () => {
@@ -35,3 +41,4 @@ app.listen(port, () => {
 });
 
 export default app;
+
