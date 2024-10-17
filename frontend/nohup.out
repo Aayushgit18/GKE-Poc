@@ -1,0 +1,11 @@
+
+> frontend@0.0.0 dev
+> vite --host
+
+
+  VITE v4.5.5  ready in 588 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://10.128.0.2:5173/
+11:07:25 AM [vite] .env.local changed, restarting server...
+11:07:25 AM [vite] server restarted.
