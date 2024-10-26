@@ -15,17 +15,17 @@ pipeline {
                 sh 'docker build -f ./backend/Dockerfile -t wanderlust_backend:1 .'
             }
         }
-    }
-
+        
         stage("Push Stage") {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_password', usernameVariable: 'docker_username')]) {
-                     sh 'docker login -u $DOCKER_USERNAME --password-stdin $DOCKER_PASSWORD '
-        }
-                // sh 'docker build -f ./frontend/Dockerfile -t wanderlust_frontend:1 .'
-                // sh 'docker build -f ./backend/Dockerfile -t wanderlust_backend:1 .'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                }
+                // sh 'docker push wanderlust_frontend:1'
+                // sh 'docker push wanderlust_backend:1'
             }
         }
+    }
     
     post {
         success {
