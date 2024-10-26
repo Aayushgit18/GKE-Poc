@@ -1,7 +1,7 @@
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package.json package-* /app/
-RUN npm install --legacy-peer-deps
+RUN npm install-backend --legacy-peer-deps
 COPY . .
 EXPOSE 5000
 
