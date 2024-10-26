@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: amaurya07/wanderlust_frontend:1
+        image: amaurya07/wanderlust_frontend:2
         resources:
           limits:
             memory: "128Mi"
