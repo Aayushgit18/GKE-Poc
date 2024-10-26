@@ -34,6 +34,7 @@ pipeline {
                     sh 'kubectl apply -f ./kubernetes/frontend-deployment.yaml -n devsecops'
                     sh 'kubectl apply -f ./kubernetes/frontend-service.yaml -n devsecops'
                     sh 'kubectl get pods -n devsecops'
+                    sh 'kubectl get service -n devsecops'
                 }
             }
         }
