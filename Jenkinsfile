@@ -31,7 +31,7 @@ pipeline {
         stage("Deploy to GKE Cluster") {
             steps {
                 kubeconfig(credentialsId: 'gke-config', caCertificate: '', serverUrl: 'https://34.56.143.43') {
-                    sh 'kubectl get pods'
+                    sh 'kubectl get pods -n devsecops'
                     sh 'kubectl apply -f ./kubernetes/frontend-deployment.yaml -n devsecops'
                     sh 'kubectl apply -f ./kubernetes/frontend-service.yaml -n devsecops'
                 }
