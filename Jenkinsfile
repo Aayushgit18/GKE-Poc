@@ -30,15 +30,10 @@ pipeline {
 
         stage("Deploy to GKE Cluster") {
             steps {
-                withCredentials([file(credentialsId: 'gcp-devsecops', variable: 'gcp_devsecops')]) {
-                    sh "gcloud auth activate-service-account --key-file=$GCP_DEVSECOPS"
-                    sh 'gcloud config set project devsecops-3-tier'
-                    sh 'gcloud container clusters get-credentials wanderlust-devsecops --zone us-central1'
-
-                    sh 'kubectl apply -f ./kubernetes/frontend-deployment.yaml --validate=false'
-                    sh 'kubectl apply -f ./kubernetes/frontend-service.yaml --validate=false'
-
-            }
+                kubeconfig(credentialsId: 'gke-config', serverUrl: 'https://34.56.143.43') {
+                    sh 'kubectl apply -f ./kubernetes/frontend-deployment.yaml'
+                    sh 'kubectl apply -f ./kubernetes/frontend-service.yaml'
+                }
             }
         }
     }
