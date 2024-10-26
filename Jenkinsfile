@@ -31,7 +31,7 @@ pipeline {
         stage("Deploy to GKE Cluster") {
             steps {
                 withCredentials([file(credentialsId: 'gcp-devsecops', variable: 'gcp_devsecops')]) {
-                    echo "GOOGLE_APPLICATION_CREDENTIALS path: $GCP_DEVSECOPS"
+                    sh "ls -l $GOOGLE_APPLICATION_CREDENTIALS"
                     sh 'gcloud auth activate-service-account --key-file=$GCP_DEVSECOPS'
             }
             }
