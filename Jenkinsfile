@@ -4,7 +4,7 @@ pipeline{
         stage("Checkout Stage"){
             steps{
                 script {
-                sh 'git branch: 'gcp-devsecops', url: 'https://github.com/amitmaurya07/wanderlust-devsecops.git''
+                git branch: 'gcp-devsecops', url: 'https://github.com/amitmaurya07/wanderlust-devsecops.git'
             }
             }
         }
