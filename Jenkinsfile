@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Checkout Stage"){
             steps{
-                sh 'git branch: 'gcp-compose', url: 'https://github.com/amitmaurya07/wanderlust-devsecops.git''
+                sh 'git branch: 'gcp-devsecops', url: 'https://github.com/amitmaurya07/wanderlust-devsecops.git''
             }
         }
     }
