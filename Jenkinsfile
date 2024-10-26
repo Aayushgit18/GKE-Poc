@@ -1,26 +1,23 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Checkout Stage"){
-            steps{
+    stages {
+        stage("Checkout Stage") {
+            steps {
                 script {
-                git branch: 'gcp-devsecops', url: 'https://github.com/amitmaurya07/wanderlust-devsecops.git'
-            }
+                    git branch: 'gcp-devsecops', url: 'https://github.com/amitmaurya07/wanderlust-devsecops.git'
+                }
             }
         }
-    }
-    post{
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-    }
-        stage("Build Stage"){
-            steps{
+        
+        stage("Build Stage") {
+            steps {
                 sh 'docker build -t wanderlust:1 .'
             }
         }
-    post{
-        success{
+    }
+    
+    post {
+        success {
             echo "========pipeline executed successfully ========"
         }
     }
