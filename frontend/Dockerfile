@@ -1,6 +1,6 @@
 FROM node:18-alpine AS builder
 WORKDIR /app
-COPY ./frontend/package.json ./frontend/package-lock.json ./
+COPY ./frontend/package.json ./
 RUN npm install 
 COPY ./frontend .
 EXPOSE 5173
