@@ -7,5 +7,4 @@ spec:
   selector:
     app: wanderlust-frontend
   ports:
-  - port: 30001
-    targetPort: 5173
+  - port: 5173
