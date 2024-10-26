@@ -35,8 +35,8 @@ pipeline {
                     sh 'gcloud config set project devsecops-3-tier'
                     sh 'gcloud container clusters get-credentials wanderlust-devsecops --zone us-central1'
 
-                    sh 'kubectl apply -f ./kubernetes/frontend-deployment.yaml'
-                    sh 'kubectl apply -f ./kubernetes/frontend-service.yaml'
+                    sh 'kubectl apply -f ./kubernetes/frontend-deployment.yaml --validate=false'
+                    sh 'kubectl apply -f ./kubernetes/frontend-service.yaml --validate=false'
 
             }
             }
