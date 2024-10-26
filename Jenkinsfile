@@ -32,7 +32,7 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'gcp-devsecops', variable: 'gcp_devsecops')]) {
                     sh "ls -l $GCP_DEVSECOPS"
-                    sh 'gcloud auth activate-service-account --key-file=$GCP_DEVSECOPS'
+                    sh "gcloud auth activate-service-account --key-file=$GCP_DEVSECOPS"
             }
             }
         }
