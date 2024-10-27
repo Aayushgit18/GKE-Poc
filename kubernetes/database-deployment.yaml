@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wanderlust-db
+spec:
+  selector:
+    matchLabels:
+      app: wanderlust-db
+  template:
+    metadata:
+      labels:
+        app: wanderlust-db
+    spec:
+      containers:
+      - name: mongo_db
+        image: mongo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+            - containerPort: 27017
+        envFrom:
+            - secretKeyRef:
+                name: mongo-creds
+        volumeMounts:
+            - name: mongodb-storage
+              mountPath: /data/mongo
+      volumes:
+        - name: mongodb-storage
+          persistentVolumeClaim:
+            claimName: mongodb-pvc
+
