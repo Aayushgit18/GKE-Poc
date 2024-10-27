@@ -3,9 +3,10 @@ kind: PersistentVolume
 metadata:
   name: mongo-data
 spec:
-  accessModes:
-    - ReadWriteOnce
   capacity:
     storage: 1Gi
-  hostPath:
-    path: /data/mongo
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: mongo
+    fsType: ext4
