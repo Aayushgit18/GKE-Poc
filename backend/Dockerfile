@@ -8,5 +8,5 @@ EXPOSE 5000
 FROM node:alpine3.20
 WORKDIR /app 
 COPY --from=builder /app /app/
-COPY .env.sample .
+COPY ./backend/.env.sample .
 CMD ["npm","start"]
