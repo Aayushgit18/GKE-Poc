@@ -8,5 +8,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
-    pdName: mongo
+    pdName: pvc-a6aa1ade-eb28-4e3b-9f67-efa5738df867
     fsType: ext4
