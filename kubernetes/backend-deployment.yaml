@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wanderlust-devsecops-backend
+spec:
+  selector:
+    matchLabels:
+      app: wanderlust-backend
+  template:
+    metadata:
+      labels:
+        app: wanderlust-backend
+    spec:
+      containers:
+      - name: backend
+        image: amaurya07/wanderlust_backend:2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
