@@ -12,7 +12,7 @@ spec:
         app: wanderlust-db
     spec:
       containers:
-      - name: mongo_db
+      - name: mongo
         image: mongo
         resources:
           limits:
