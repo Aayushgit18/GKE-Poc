@@ -20,3 +20,16 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 3000
+        env:
+          - name: MONGO_CONN_STR
+            value: mongodb:/mongo-nodeport-svc:27017/todo?directConnection=true
+          - name: MONGO_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongo-sec
+                key: username
+          - name: MONGO_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongo-sec
+                key: password
