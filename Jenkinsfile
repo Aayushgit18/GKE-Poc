@@ -13,7 +13,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                 sh 'docker build -f ./frontend/Dockerfile -t $DOCKER_USERNAME/wanderlust_frontend:2 .'
-                sh 'docker build -f ./backend/Dockerfile -t $DOCKER_USERNAME/wanderlust_backend:2 .'
+                sh 'docker build -f ./backend/Dockerfile -t $DOCKER_USERNAME/wanderlust_backend:2 --no-cache .'
             }
             }
         }
