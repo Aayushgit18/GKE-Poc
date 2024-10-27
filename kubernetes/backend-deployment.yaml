@@ -26,10 +26,10 @@ spec:
           - name: MONGO_USERNAME
             valueFrom:
               secretKeyRef:
-                name: mongo-sec
+                name: mongo-creds
                 key: username
           - name: MONGO_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: mongo-sec
+                name: mongo-creds
                 key: password
