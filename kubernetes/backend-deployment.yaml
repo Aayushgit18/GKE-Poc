@@ -22,7 +22,7 @@ spec:
         - containerPort: 3000
         env:
           - name: MONGO_CONN_STR
-            value: mongodb:/mongo-nodeport-svc:27017/todo?directConnection=true
+            value: mongodb://mongo-nodeport-svc:27017/todo?directConnection=true
           - name: MONGO_USERNAME
             valueFrom:
               secretKeyRef:
@@ -33,3 +33,63 @@ spec:
               secretKeyRef:
                 name: mongo-creds
                 key: password
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: PORT
+          - name: MONGODB_URI
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: MONGODB_URI
+          - name: REDIS_URL
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: REDIS_URL
+          - name: FRONTEND_URL
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: FRONTEND_URL
+          - name: BACKEND_URL
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: BACKEND_URL
+          - name: ACCESS_COOKIE_MAXAGE
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: ACCESS_COOKIE_MAXAGE
+          - name: ACCESS_TOKEN_EXPIRES_IN
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: ACCESS_TOKEN_EXPIRES_IN
+          - name: REFRESH_COOKIE_MAXAGE
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: REFRESH_COOKIE_MAXAGE
+          - name: REFRESH_TOKEN_EXPIRES_IN
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: REFRESH_TOKEN_EXPIRES_IN
+          - name: JWT_SECRET
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: JWT_SECRET
+          - name: NODE_ENV
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: NODE_ENV
+          - name: CORS_ORIGIN
+            valueFrom:
+              configMapKeyRef:
+                name: myapp
+                key: CORS_ORIGIN
