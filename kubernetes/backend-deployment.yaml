@@ -36,60 +36,60 @@ spec:
           - name: PORT
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: PORT
           - name: MONGODB_URI
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: MONGODB_URI
           - name: REDIS_URL
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: REDIS_URL
           - name: FRONTEND_URL
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: FRONTEND_URL
           - name: BACKEND_URL
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: BACKEND_URL
           - name: ACCESS_COOKIE_MAXAGE
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: ACCESS_COOKIE_MAXAGE
           - name: ACCESS_TOKEN_EXPIRES_IN
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: ACCESS_TOKEN_EXPIRES_IN
           - name: REFRESH_COOKIE_MAXAGE
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: REFRESH_COOKIE_MAXAGE
           - name: REFRESH_TOKEN_EXPIRES_IN
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: REFRESH_TOKEN_EXPIRES_IN
           - name: JWT_SECRET
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: JWT_SECRET
           - name: NODE_ENV
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: NODE_ENV
           - name: CORS_ORIGIN
             valueFrom:
               configMapKeyRef:
-                name: myapp
+                name: wanderlust-cm
                 key: CORS_ORIGIN
