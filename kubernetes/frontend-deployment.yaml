@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: amaurya07/wanderlust_frontend:3
+        image: amaurya07/wanderlust_frontend:4
         env:
           - name: VITE_API_PATH
             value: "http://35.225.228.144:5000"
