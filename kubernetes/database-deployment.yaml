@@ -45,6 +45,16 @@ spec:
           readOnly: true
         - name: mongodb-data
           mountPath: /data/db
+        readinessProbe:
+          exec:
+            command:
+            - mongo
+            - --host
+            - mongodb-test-0.mongodb-test.devsecops.svc.cluster.local
+            - --eval
+            - 'db.runCommand({ ping: 1 })'
+          initialDelaySeconds: 5
+          periodSeconds: 5
       volumes:
       - name: k8-test
         secret:
