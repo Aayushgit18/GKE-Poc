@@ -20,6 +20,7 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
           - >
+            until mongo --host mongodb-test --eval 'print("waited for connection")'; do sleep 5; done;
             mongoimport --host mongodb-test --port 27017 --db wanderlust --collection posts
             --file /config/sample.json --jsonArray;
         volumeMounts:
