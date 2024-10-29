@@ -3,7 +3,6 @@ pipeline {
 
     parameters {
         string(name: 'DOCKER_IMAGE_TAG', defaultValue: 'latest', description: 'Tag for Docker images')
-        choice(name: 'DEPLOY_ENVIRONMENT', choices: ['dev', 'staging', 'production'], description: 'Deployment environment')
     }
 
     stages {
