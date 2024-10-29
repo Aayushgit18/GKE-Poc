@@ -1,15 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: mongodb-test
   labels:
-    app: wanderlust-db
-  name: mongo-nodeport-svc
+    app: database
 spec:
-  ports:
-  - port: 27017
-    protocol: TCP
-    targetPort: 27017
-    nodePort: 32000
+  clusterIP: None
   selector:
-    app: wanderlust-db
-  type: NodePort
+    app: database
