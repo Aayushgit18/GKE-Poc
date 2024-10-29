@@ -12,19 +12,7 @@ spec:
     metadata:
       labels:
         app: database
-        selector: mongodb-test
     spec:
-      initContainers:
-      - name: mongoimport
-        image: mongo:4.0.8
-        command: ["/bin/sh", "-c"]
-        args:
-          - >
-            until mongo --host mongodb-test-0.mongodb-test.devsecops.svc.cluster.local --eval 'print("waited for connection")'; do sleep 5; done;
-            mongoimport --host mongodb-test-0.mongodb-test.devsecops.svc.cluster.local --port 27017 --db wanderlust --collection posts --file /config/sample.json --jsonArray;
-        volumeMounts:
-        - name: mongobackend-cm
-          mountPath: /config
       containers:
       - name: mongodb-test
         image: mongo:4.0.8
@@ -40,21 +28,18 @@ spec:
         - name: mongodb-scripts
           mountPath: /docker-entrypoint-initdb.d
           readOnly: true
-        - name: mongodb-configmap
-          mountPath: /config
-          readOnly: true
         - name: mongodb-data
           mountPath: /data/db
-        readinessProbe:
-          exec:
-            command:
-            - mongo
-            - --host
-            - mongodb-test-0.mongodb-test.devsecops.svc.cluster.local
-            - --eval
-            - 'db.runCommand({ ping: 1 })'
-          initialDelaySeconds: 5
-          periodSeconds: 5
+      - name: mongoimport
+        image: mongo:4.0.8
+        command: ["sh", "-c"]
+        args:
+          - |
+            until mongo --host localhost --eval 'print("waiting for MongoDB to start")'; do sleep 5; done;
+            mongoimport --host localhost --port 27017 --db wanderlust --collection posts --file /config/sample.json --jsonArray;
+        volumeMounts:
+        - name: mongobackend-cm
+          mountPath: /config
       volumes:
       - name: k8-test
         secret:
@@ -81,18 +66,12 @@ spec:
           items:
           - key: ensure-users.js
             path: ensure-users.js
-      - name: mongodb-configmap
-        configMap:
-          name: mongodb-configmap
-          items:
-          - key: mongo.conf
-            path: mongo.conf
+      - name: mongodb-data
+        persistentVolumeClaim:
+          claimName: mongodb-pvc
       - name: mongobackend-cm
         configMap:
           name: mongobackend-cm
           items:   
           - key: sample.json  
             path: sample.json
-      - name: mongodb-data
-        persistentVolumeClaim:
-          claimName: mongodb-pvc
