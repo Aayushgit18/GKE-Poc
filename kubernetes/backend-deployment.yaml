@@ -89,7 +89,4 @@ spec:
                 name: wanderlust-cm
                 key: NODE_ENV
           - name: CORS_ORIGIN
-            valueFrom:
-              configMapKeyRef:
-                name: wanderlust-cm
-                key: CORS_ORIGIN
+            value: http://34.57.143.10:5173
