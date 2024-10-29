@@ -20,9 +20,8 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
           - >
-            until mongo --host mongodb-test --eval 'print("waited for connection")'; do sleep 5; done;
-            mongoimport --host mongodb-test --port 27017 --db wanderlust --collection posts
-            --file /config/sample.json --jsonArray;
+            until mongo --host mongodb-test-0.mongodb-test.devsecops.svc.cluster.local --eval 'print("waited for connection")'; do sleep 5; done;
+            mongoimport --host mongodb-test-0.mongodb-test.devsecops.svc.cluster.local --port 27017 --db wanderlust --collection posts --file /config/sample.json --jsonArray;
         volumeMounts:
         - name: mongobackend-cm
           mountPath: /config
