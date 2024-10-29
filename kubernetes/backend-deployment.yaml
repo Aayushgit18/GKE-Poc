@@ -22,7 +22,7 @@ spec:
         - containerPort: 3000
         env:
           - name: MONGODB_URI
-            value: mongodb://mongo:mongo_password@mongo-nodeport-svc:27017/wanderlust?directConnection=true
+            value: mongodb://mongo-nodeport-svc:27017/wanderlust?directConnection=true
           - name: MONGO_USERNAME
             valueFrom:
               secretKeyRef:
