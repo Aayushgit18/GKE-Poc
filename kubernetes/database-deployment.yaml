@@ -23,7 +23,7 @@ spec:
             mongoimport --host mongodb-test --port 27017 --db wanderlust --collection posts
             --file /config/sample.json --jsonArray;
         volumeMounts:
-        - name: mongodb-configmap
+        - name: mongobackend-cm
           mountPath: /config
       containers:
       - name: mongodb-test
