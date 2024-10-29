@@ -19,12 +19,12 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     script {
                         def frontendImage = "${DOCKER_USERNAME}/wanderlust_frontend:${params.DOCKER_IMAGE_TAG}"
-                        sh "docker build -f ./frontend/Dockerfile -t ${frontendImage} --no-cache ."
+                        sh "docker build -f ./frontend/Dockerfile -t ${frontendImage} ."
                     }
 
                     script {
                         def backendImage = "${DOCKER_USERNAME}/wanderlust_backend:${params.DOCKER_IMAGE_TAG}"
-                        sh "docker build -f ./backend/Dockerfile -t ${backendImage} --no-cache ."
+                        sh "docker build -f ./backend/Dockerfile -t ${backendImage} ."
                     }
                 }
             }
