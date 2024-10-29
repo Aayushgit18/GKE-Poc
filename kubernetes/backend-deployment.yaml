@@ -21,28 +21,28 @@ spec:
         ports:
         - containerPort: 3000
         env:
-          # - name: MONGO_CONN_STR
-          #   value: mongodb://mongo:mongo_password@mongo-nodeport-svc:27017/wanderlust?directConnection=true
-          # - name: MONGO_USERNAME
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: mongo-creds
-          #       key: username
-          # - name: MONGO_PASSWORD
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: mongo-creds
-          #       key: password
+          - name: MONGODB_URI
+            value: mongodb://mongo:mongo_password@mongo-nodeport-svc:27017/wanderlust?directConnection=true
+          - name: MONGO_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongo-creds
+                key: username
+          - name: MONGO_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongo-creds
+                key: password
           - name: PORT
             valueFrom:
               configMapKeyRef:
                 name: wanderlust-cm
                 key: PORT
-          - name: MONGODB_URI
-            valueFrom:
-              configMapKeyRef:
-                name: wanderlust-cm
-                key: MONGODB_URI
+          # - name: MONGODB_URI
+          #   valueFrom:
+          #     configMapKeyRef:
+          #       name: wanderlust-cm
+          #       key: MONGODB_URI
           - name: REDIS_URL
             valueFrom:
               configMapKeyRef:
