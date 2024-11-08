@@ -1,8 +1,8 @@
 FROM node:18-alpine AS builder
 WORKDIR /app
-COPY package.json package-* /app/
+COPY ./frontend/package.json package-* /app/
 RUN npm install 
-COPY . .
+COPY ./frontend .
 EXPOSE 5173
 
 FROM node:alpine3.20
