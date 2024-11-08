@@ -6,7 +6,7 @@
 
 ---
 
-### Blog Link: [How to Deploy a Three-Tier Application on GKE: A Step-by-Step Guide](https://amitmaurya.hashnode.dev/how-to-deploy-a-three-tier-application-on-gke-a-step-by-step-guide#heading-understanding-three-tier-architecture-in-kubernetes)
+### Blog Link: [How to Deploy a Three-Tier Application on GKE: A Step-by-Step Guide]([https://amitmaurya.hashnode.dev/how-to-deploy-a-three-tier-application-on-gke-a-step-by-step-guide#heading-understanding-three-tier-architecture-in-kubernetes](https://amitmaurya.hashnode.dev/how-to-deploy-a-three-tier-application-on-gke-a-step-by-step-guide)
 ## Step 1: Setting Up GCP Project
 
 1. **Create a GCP Project**:
