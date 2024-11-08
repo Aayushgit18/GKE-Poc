@@ -227,15 +227,3 @@ Please note that this project is released with a [Contributor Code of Conduct](h
 ## 📄 License
 
 This project is licensed under the [MIT License](./LICENSE).
-
----
-
-## 👥 Contributors
-
-We extend our heartfelt gratitude for your invaluable contribution to our project! Your efforts play a pivotal role in elevating Wanderlust to greater heights. 😊
-
-<div>
-<a href="https://github.com/krishnaacharyaa/wanderlust/graphs/contributors">
-  <img width="90%" src="https://contrib.rocks/image?repo=krishnaacharyaa/wanderlust" />
-</a>
-</div>
