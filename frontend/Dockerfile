@@ -1,11 +1,21 @@
+# Stage 1: Build
 FROM node:18-alpine AS builder
 WORKDIR /app
-COPY ./frontend/package.json ./
-RUN npm install 
-COPY ./frontend .
-EXPOSE 5173
 
+# Copy only package.json first for caching
+COPY package.json package-lock.json* ./
+RUN npm install
+
+# Copy rest of the frontend source code
+COPY . .
+
+# Stage 2: Runtime
 FROM node:alpine3.20
-WORKDIR /app 
-COPY --from=builder /app /app/
-CMD ["npm","run","dev","--","--host"]
+WORKDIR /app
+
+# Copy built app from builder
+COPY --from=builder /app /app
+
+EXPOSE 5173
+CMD ["npm", "run", "dev"]
+
