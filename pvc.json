@@ -1,0 +1,43 @@
+{
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"PersistentVolumeClaim\",\"metadata\":{\"annotations\":{},\"name\":\"mongodb-pvc\",\"namespace\":\"devsecops\"},\"spec\":{\"accessModes\":[\"ReadWriteOnce\"],\"resources\":{\"requests\":{\"storage\":\"10Gi\"}},\"storageClassName\":\"standard\"}}\n",
+            "pv.kubernetes.io/bind-completed": "yes",
+            "pv.kubernetes.io/bound-by-controller": "yes",
+            "volume.beta.kubernetes.io/storage-provisioner": "pd.csi.storage.gke.io",
+            "volume.kubernetes.io/storage-provisioner": "pd.csi.storage.gke.io",
+            "volume.kubernetes.io/storage-resizer": "pd.csi.storage.gke.io"
+        },
+        "creationTimestamp": "2025-09-15T09:29:40Z",
+        "deletionGracePeriodSeconds": 0,
+        "deletionTimestamp": "2025-09-15T13:40:55Z",
+        "name": "mongodb-pvc",
+        "namespace": "devsecops",
+        "resourceVersion": "1757943655801423009",
+        "uid": "ecc0ac45-805f-4fb2-9106-a5391aa5fb57"
+    },
+    "spec": {
+        "accessModes": [
+            "ReadWriteOnce"
+        ],
+        "resources": {
+            "requests": {
+                "storage": "10Gi"
+            }
+        },
+        "storageClassName": "standard",
+        "volumeMode": "Filesystem",
+        "volumeName": "pvc-ecc0ac45-805f-4fb2-9106-a5391aa5fb57"
+    },
+    "status": {
+        "accessModes": [
+            "ReadWriteOnce"
+        ],
+        "capacity": {
+            "storage": "10Gi"
+        },
+        "phase": "Bound"
+    }
+}
